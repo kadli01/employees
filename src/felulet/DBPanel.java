@@ -18,6 +18,7 @@ public class DBPanel extends JPanel {
 	private JTable table;
 	DefaultTableModel model = new DefaultTableModel();
 	JComboBox comboBox = new JComboBox();
+	private List<Employee> list;
 
 	private String sql = "select * from Employees";
 
@@ -40,6 +41,7 @@ public class DBPanel extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				feltolt();
+				dropdown();
 			}
 		});
 		setLayout(null);
@@ -86,17 +88,21 @@ public class DBPanel extends JPanel {
 		add(lblVros);
 	}
 
+	
+
 	protected void szures() {
 		feltolt();
 	}
 
 	protected void feltolt() {
 		model.setRowCount(0);
-		List<Employee> list = DBConnection.empBe(sql);
+		list = DBConnection.empBe(sql);
 		for (Employee employee : list) {
 			model.addRow(new Object[] { employee.getId(), employee.getLastName(), employee.getFirstName(),
 					employee.getCity() });
 		}
+	}
+	protected void dropdown() {
 		comboBox.addItem("Összes");
 
 		String[] varosok = new String[model.getRowCount()];
@@ -111,5 +117,6 @@ public class DBPanel extends JPanel {
 		for (int j = 0; j < v2.length; j++) {
 			comboBox.addItem(v2[j]);
 		}
+		
 	}
 }
