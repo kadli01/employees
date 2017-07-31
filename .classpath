@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="F:/Program Files (x86)/sqljdbc_4.0/enu/sqljdbc4.jar" sourcepath="C:/Users/Krisz/.m2/repository/com/hynnet/sqljdbc4-chs/4.0.2206.100/sqljdbc4-chs-4.0.2206.100-sources.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="F:/Program Files (x86)/sqljdbc_4.0/enu/auth/x64"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
