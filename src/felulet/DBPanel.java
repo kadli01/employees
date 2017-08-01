@@ -12,6 +12,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class DBPanel extends JPanel {
@@ -36,7 +38,7 @@ public class DBPanel extends JPanel {
 		model.addColumn("First Name");
 		model.addColumn("City");
 
-		JButton btnNewButton = new JButton("T\u00E1bl\u00E1zat felt\u00F6lt\u00E9se");
+		JButton btnNewButton = new JButton("Táblázat feltöltése");
 		btnNewButton.setBounds(10, 11, 149, 23);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -47,6 +49,12 @@ public class DBPanel extends JPanel {
 		setLayout(null);
 		add(btnNewButton);
 		table = new JTable(model);
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+			}
+		});
 		table.setBounds(157, 173, 1, 1);
 		table.setModel(model);
 
@@ -54,15 +62,15 @@ public class DBPanel extends JPanel {
 		scrollPane.setBounds(41, 53, 382, 202);
 		add(scrollPane);
 
-		JButton btnNewButton_1 = new JButton("M\u00F3dos\u00EDt\u00E1s");
+		JButton btnNewButton_1 = new JButton("Módosítás");
 		btnNewButton_1.setBounds(118, 276, 107, 23);
 		add(btnNewButton_1);
 
-		JButton btnNewButton_2 = new JButton("\u00DAj");
+		JButton btnNewButton_2 = new JButton("Új");
 		btnNewButton_2.setBounds(235, 276, 89, 23);
 		add(btnNewButton_2);
 
-		JButton btnNewButton_3 = new JButton("T\u00F6rl\u00E9s");
+		JButton btnNewButton_3 = new JButton("Törlés");
 		btnNewButton_3.setBounds(334, 276, 89, 23);
 		add(btnNewButton_3);
 
@@ -83,7 +91,7 @@ public class DBPanel extends JPanel {
 			}
 		});
 
-		JLabel lblVros = new JLabel("V\u00E1ros:");
+		JLabel lblVros = new JLabel("Város:");
 		lblVros.setBounds(201, 15, 43, 14);
 		add(lblVros);
 	}

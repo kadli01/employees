@@ -39,9 +39,7 @@ public class Employee {
 		this.city = city;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	
 	
 
