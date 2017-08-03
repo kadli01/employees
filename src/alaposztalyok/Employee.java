@@ -1,8 +1,10 @@
 package alaposztalyok;
 
+
 public class Employee {
 	private String firstName, lastName, city;
 	private int id;
+	private Territory territory;
 	
 	public Employee(String firstName, String lastName, String city, int id) {
 		this.firstName = firstName;

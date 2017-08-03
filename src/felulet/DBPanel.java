@@ -52,7 +52,10 @@ public class DBPanel extends JPanel {
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				
+				int sor = table.getSelectedRow();
+				int empID =(int) table.getValueAt(sor, 0);
+				System.out.println(empID);
+				DBConnection.getTerritory(empID);
 			}
 		});
 		table.setBounds(157, 173, 1, 1);
@@ -109,6 +112,7 @@ public class DBPanel extends JPanel {
 			model.addRow(new Object[] { employee.getId(), employee.getLastName(), employee.getFirstName(),
 					employee.getCity() });
 		}
+		
 	}
 	protected void dropdown() {
 		comboBox.addItem("Összes");
