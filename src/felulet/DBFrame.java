@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class DBFrame extends JFrame {
+public class DBFrame extends JFrame  {
 
 	private JPanel contentPane;
 

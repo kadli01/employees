@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import alaposztalyok.Employee;
+import alaposztalyok.Region;
+import alaposztalyok.Territory;
 import db.DBConnection;
 
 import java.awt.event.ActionListener;
@@ -21,6 +23,7 @@ public class DBPanel extends JPanel {
 	DefaultTableModel model = new DefaultTableModel();
 	JComboBox comboBox = new JComboBox();
 	private List<Employee> list;
+	private Region region;
 
 	private String sql = "select * from Employees";
 
@@ -55,7 +58,14 @@ public class DBPanel extends JPanel {
 				int sor = table.getSelectedRow();
 				int empID =(int) table.getValueAt(sor, 0);
 				System.out.println(empID);
-				DBConnection.getTerritory(empID);
+				region=DBConnection.getRegion(empID);
+				int i=0;
+				String message ="REGION\t\tTERRITORY\n "+region.getDescription();
+				for (Territory territory: region.getTerritories()) {
+					message+=region.getTerritories().get(i).getDescription()+ "\n"+"\t\t";
+					i++;
+				}
+				JOptionPane.showMessageDialog(null, new JTextArea( message));
 			}
 		});
 		table.setBounds(157, 173, 1, 1);
