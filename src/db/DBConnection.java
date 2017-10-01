@@ -33,7 +33,6 @@ public class DBConnection {
 		List<Employee> empList = new ArrayList<>();
 		connect();
 		try {
-			// String sql = "select * from Employees where City = "+c;
 
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
@@ -55,61 +54,11 @@ public class DBConnection {
 		} catch (Exception e) {
 			e.printStackTrace();
 
-		} finally {
+	 }  finally {
 			return empList;
 		}
 	}
 
-//	public static void getTerritory(int empID) {
-//		connect();
-////		String sql = "select r.RegionDescription, t.TerritoryDescription "
-////				+ "from Region r left outer join Territories t on r.RegionID=t.RegionID where t.TerritoryID "
-////				+ "in(select t.TerritoryID from EmployeeTerritories et "
-////				+ "inner join Employees e on e.EmployeeID=et.EmployeeID "
-////				+ "inner join Territories t on et.TerritoryID = t.TerritoryID where e.EmployeeID=" + empID + ") "
-////				+ "order by TerritoryDescription";
-//		
-//		String territorySQL = "select t.* from Territories t inner join EmployeeTerritories et on t.TerritoryID=et.TerritoryID "+
-//				"where et.EmployeeID="+empID;
-//		List<Territory> territories=new ArrayList<>();
-//		try {
-//			int territoryID;
-//			
-//			Statement stmt = conn.createStatement();
-//			ResultSet rs = stmt.executeQuery(territorySQL);
-//			
-//			
-//			while (rs.next()) {
-//				int i=0;
-//				territoryID=rs.getInt(1);
-//				
-//				
-//				Territory territory = new Territory(rs.getInt(1), rs.getString(2), rs.getInt(3));
-//				territories.add(territory);
-//				//System.out.println(rs.getInt(1) + " " + rs.getString(2)+ " "+rs.getInt(3));
-//				
-//				String regionSQL = "select r.* "+
-//									"from Region r inner join Territories t on r.RegionID=t.RegionID where t.TerritoryID="+territoryID;
-//				Statement stmt2 = conn.createStatement();
-//				ResultSet rs2 = stmt2.executeQuery(regionSQL);
-//				while (rs2.next()) {
-//					//System.out.println(rs2.getInt(1) + " " + rs2.getString(2));
-//					alaposztalyok.Region region = new alaposztalyok.Region(rs2.getInt(1), rs2.getString(2)) ;
-//					//System.out.println(rs2.getInt(1) + " " + rs2.getString(2));
-//				}
-//				i++;			
-//			}
-//			rs.close();
-//			stmt.close();
-//			conn.close();
-//			
-//
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//	}
 	
 	
 	public static alaposztalyok.Region getRegion(int empID) {
@@ -128,16 +77,11 @@ public class DBConnection {
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				region = new alaposztalyok.Region(rs.getInt(1), rs.getString(2));
-				Territory territory = new Territory(rs.getInt(3), rs.getString(4), rs.getInt(5), region);
-				//System.out.println(territory.getDescription()+" "+territory.getRegion().getDescription());			
+				Territory territory = new Territory(rs.getInt(3), rs.getString(4), rs.getInt(5), region);		
 				territories.add(territory);
 			}
 			region.setTerritories(territories);
-			int i=0;
-			for (Territory territory : territories) {
-				//System.out.println(region.getId()+" "+region.getDescription()+" "+region.getTerritories().get(i).getDescription());
-				i++;
-			}	
+		
 			rs.close();
 			stmt.close();
 			conn.close();

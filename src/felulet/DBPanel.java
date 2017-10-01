@@ -47,6 +47,7 @@ public class DBPanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				feltolt();
 				dropdown();
+				btnNewButton.setEnabled(false);
 			}
 		});
 		setLayout(null);
@@ -57,7 +58,7 @@ public class DBPanel extends JPanel {
 			public void mouseClicked(MouseEvent arg0) {
 				int sor = table.getSelectedRow();
 				int empID =(int) table.getValueAt(sor, 0);
-				System.out.println(empID);
+				//System.out.println(empID);
 				region=DBConnection.getRegion(empID);
 				int i=0;
 				String message ="REGION\t\tTERRITORY\n "+region.getDescription();
@@ -111,11 +112,11 @@ public class DBPanel extends JPanel {
 
 	
 
-	protected void szures() {
+	public void szures() {
 		feltolt();
 	}
 
-	protected void feltolt() {
+	public void feltolt() {
 		model.setRowCount(0);
 		list = DBConnection.empBe(sql);
 		for (Employee employee : list) {
@@ -124,7 +125,7 @@ public class DBPanel extends JPanel {
 		}
 		
 	}
-	protected void dropdown() {
+	public void dropdown() {
 		comboBox.addItem("Összes");
 
 		String[] varosok = new String[model.getRowCount()];
